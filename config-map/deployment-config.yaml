@@ -1,0 +1,52 @@
+# https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-demo
+  labels:
+    app: demo-app
+spec:
+  selector:
+    matchLabels:
+      app: demo-app
+  replicas: 1
+
+  template:
+    metadata:
+      labels:
+        app: demo-app
+    spec:
+
+      containers:
+      - name: demo-pod-container
+        image: nginx
+        imagePullPolicy: IfNotPresent
+
+        env:
+  
+        - name: DATABASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: DATABASE_URL
+
+
+
+  
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: LOG_LEVEL
+
+        volumeMounts:
+        - name: config-volumne
+          mountPath: /etc/config
+      volumes:
+      - name: config-volumne
+        configMap:
+          name: app-config
+
+
+
+

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-label
+  labels:
+    app.kubernetes.io/name: "front_end"
+    app.kubernetes.io/environment: "dev"
+    app.kubernetes.io/version: v1
+spec:
+  containers:
+  - name: pod-with-label-con
+    image: nginx
+    ports:
+      - containerPort: 80

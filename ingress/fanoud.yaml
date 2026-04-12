@@ -1,0 +1,41 @@
+# ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+spec:
+  ingressClassName: nginx 
+  rules:
+  - host: app-1.io  
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app-1
+            port:
+              number: 80
+
+  - host: app-2.io  
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app-2
+            port:
+              number: 8080
+
+
+  - host: app-3.io  
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app-3
+            port:
+              number: 8080
