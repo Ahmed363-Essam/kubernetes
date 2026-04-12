@@ -1,0 +1,12 @@
+# https://kubernetes.io/docs/concepts/configuration/configmap/
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: config-map-data
+  namespace: default
+data:
+  mysql-db-user: root
+  mysql-db-password: password
+  mysql-db-name: mydb 
+  mysql-db-host: mysql-service
+  mysql-db-port: "3306"
