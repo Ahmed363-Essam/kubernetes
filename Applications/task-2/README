@@ -1,0 +1,21 @@
+to apply a deployment 
+
+kubectl apply -f deployment.yaml 
+deployment.apps/nginx-deployment created
+
+2.	List all available Deployments
+
+kubectl get deployments
+	NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   1/1     1            1           30s
+
+3.	Describe the Deployment to view detailed info
+
+kubectl describe deployments nginx-deployment kubectl describe deployments nginx-deployment 
+
+	4.	Scale the Deployment to a different number of Pods
+kubectl scale deployment nginx-deployment --replicas 4
+deployment.apps/nginx-deployment scaled
+
+5- delete the Deployment
+kubectl delete deployment nginx-deployment
