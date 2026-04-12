@@ -1,0 +1,38 @@
+# apply the deployment a deployment
+    kubectl apply -f task.yaml 
+# get the pods before scale 
+    kubectl get pods
+    NAME                     READY   STATUS    RESTARTS   AGE
+    nginx-7d78d99c7c-g8fbg   1/1     Running   0          7s
+# see the update strategy 
+    replicas: 20
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+# get the pods after scale
+    kubectl get pods
+    nginx-7d78d99c7c-2v72r   1/1     Running   0          4m39s
+    nginx-7d78d99c7c-4xw57   1/1     Running   0          4m39s
+    nginx-7d78d99c7c-5l8td   1/1     Running   0          4m39s
+    nginx-7d78d99c7c-62tfm   0/1     Pending   0          4m39s
+    nginx-7d78d99c7c-8dx8n   1/1     Running   0          4m39s
+    nginx-7d78d99c7c-b44g4   1/1     Running   0          4m39s
+    nginx-7d78d99c7c-cfvj8   0/1     Pending   0          4m39s
+    nginx-7d78d99c7c-d4qnp   0/1     Pending   0          4m39s
+    nginx-7d78d99c7c-fq2vj   0/1     Pending   0          4m39s
+    nginx-7d78d99c7c-ghz6r   1/1     Running   0          4m39s
+    nginx-7d78d99c7c-hsh75   0/1     Pending   0          4m39s
+    nginx-7d78d99c7c-j5f7g   0/1     Pending   0          4m39s
+    nginx-7d78d99c7c-knrgf   1/1     Running   0          4m39s
+    nginx-7d78d99c7c-lcxgc   0/1     Pending   0          4m39s
+    nginx-7d78d99c7c-lx96c   0/1     Pending   0          4m39s
+    nginx-7d78d99c7c-vfc4f   1/1     Running   0          4m39s
+    nginx-7d78d99c7c-vhdnp   0/1     Pending   0          4m39s
+    nginx-7d78d99c7c-w27lv   0/1     Pending   0          4m39s
+    nginx-7d78d99c7c-wjtvd   1/1     Running   0          4m39s
+    nginx-7d78d99c7c-zn4mv   1/1     Running   0          4m39s
+# see the rollout status
+    kubectl rollout status deployment/nginx
+    deployment "nginx" successfully rolled out
