@@ -1,0 +1,4 @@
+# apply the deployment 
+    kubectl apply -f task-6.yaml 
+2- update replicaset 
+    replicas: 6
