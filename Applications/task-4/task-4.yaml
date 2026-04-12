@@ -1,0 +1,34 @@
+# https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-web
+  namespace: default
+  labels:
+    app: nginx-web
+spec:
+  selector:
+    matchLabels:
+      app: nginx-web
+  replicas: 7
+
+  template:
+    metadata:
+      labels:
+        app: nginx-web
+    spec:
+
+      containers:
+      - name: nginx-web
+        image: nginx:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 80
+          name: myjob

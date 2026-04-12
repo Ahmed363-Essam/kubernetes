@@ -1,0 +1,9 @@
+1.	Create a Deployment using httpd:latest
+    kubectl apply -f task-4.yaml 
+2. 	2.	Update the number of replicas
+      replicas: 7
+3.	Delete one of the Pods manually
+    kubectl delete deployments.apps nginx-web 
+    deployment.apps "nginx-web" deleted from default namespace
+4. kubectl delete deployments.apps nginx-web 
+deployment.apps "nginx-web" deleted from default namespace
