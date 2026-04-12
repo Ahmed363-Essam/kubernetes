@@ -1,0 +1,33 @@
+1- applt the deployemtn changed 
+    kubectl apply -f task1.yaml
+    deployment.apps/nginx-deployment created
+2-  get all the deployment 
+    kubectl get deployments.apps 
+    NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+    nginx-deployment   1/1     1            1           8s
+3- get the pods 
+    kubectl get pods
+    NAME                                READY   STATUS    RESTARTS   AGE
+    nginx-deployment-78898687c9-jsctv   1/1     Running   0          12s
+4- update the deployment 
+      replicas: 6
+    strategy:
+        type: Recreate
+5- see the status of the deployment update 
+    kubectl rollout status deployment/nginx-deployment 
+    Waiting for deployment "nginx-deployment" rollout to finish: 1 of 6 updated replicas are available...
+    Waiting for deployment "nginx-deployment" rollout to finish: 2 of 6 updated replicas are available...
+    Waiting for deployment "nginx-deployment" rollout to finish: 3 of 6 updated replicas are available...
+    Waiting for deployment "nginx-deployment" rollout to finish: 4 of 6 updated replicas are available...
+    Waiting for deployment "nginx-deployment" rollout to finish: 5 of 6 updated replicas are available...
+    deployment "nginx-deployment" successfully rolled out
+    ahmed@ahmed-virtual-machine:~/Applications/kubernetes/Appli
+6- get the pods after update
+    kubectl get pods
+    NAME                                READY   STATUS    RESTARTS   AGE
+    nginx-deployment-78898687c9-jsctv   1/1     Running   0          2m
+    nginx-deployment-78898687c9-4l5j6   1/1     Running   0          2m
+    nginx-deployment-78898687c9-5h8s7   1/1     Running   0          2m
+    nginx-deployment-78898687c9-6k9n8   1/1     Running   0          2m
+    nginx-deployment-78898687c9-7m0o9   1/1     Running   0          2m
+    nginx-deployment-78898687c9-8p1q0   1/1     Running   0          2m
