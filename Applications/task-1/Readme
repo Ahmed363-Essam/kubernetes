@@ -1,0 +1,13 @@
+# get the created pod.
+  kubectl apply -f pod.yaml 
+  pod/web-pod created
+# select all pods 
+  kubectl get pods  
+
+    NAME      READY   STATUS    RESTARTS   AGE
+    web-pod   1/1     Running   0          2m31s    
+
+    # delete a pod
+    kubectl delete pod web-pod
+    pod "web-pod" deleted
+
