@@ -1,0 +1,27 @@
+1- get the config map 
+    ubectl get configmaps 
+    NAME                   DATA   AGE
+    mysql-config           1      23m
+
+2- get secrets 
+    kubectl get secrets 
+    NAME           TYPE     DATA   AGE
+    mysql-secret   Opaque   1      23m
+    ahmed@ahmed-virtual-machine:~/Applicati
+
+    3- exec the pod of mysql
+     kubectl exec -it mysql-6df464584d-r4m9x -- mysql -u root -p
+    Enter password: 
+    Welcome to the MySQL monitor.  C
+
+    SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| test-db            |
++--------------------+
+5 rows in set (0.01 sec)

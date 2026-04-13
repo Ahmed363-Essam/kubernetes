@@ -1,0 +1,9 @@
+# https://kubernetes.io/docs/concepts/configuration/configmap/
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: mysql-config
+  namespace: default
+data:
+  db-name: test-db
+

@@ -1,5 +1,0 @@
-1- get the config map 
-    kubectl get configmaps config-map-data 
-    NAME              DATA   AGE
-    config-map-data   5      60s
-
