@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopHub - Your Premium Online Store</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
+        header { background: #2c3e50; color: white; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .logo { font-size: 1.8rem; font-weight: bold; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { color: white; text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: #3498db; }
+        .cart-icon { background: #3498db; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; }
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 150px 2rem 100px; text-align: center; margin-top: 60px; }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.3rem; margin-bottom: 2rem; }
+        .cta-button { background: white; color: #667eea; padding: 1rem 2.5rem; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: transform 0.3s; }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .features { padding: 80px 2rem; background: #f8f9fa; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #2c3e50; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmin(250px, 1fr)); gap: 2rem; }
+        .feature-card { background: white; padding: 2rem; border-radius: 10px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .feature-card:hover { transform: translateY(-10px); }
+        .feature-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .products { padding: 80px 2rem; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .product-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .product-card:hover { transform: translateY(-5px); }
+        .product-image { width: 100%; height: 250px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white; }
+        .product-info { padding: 1.5rem; }
+        .product-title { font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .product-price { font-size: 1.5rem; color: #3498db; font-weight: bold; margin-bottom: 1rem; }
+        .add-to-cart { width: 100%; background: #3498db; color: white; border: none; padding: 0.8rem; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
+        .add-to-cart:hover { background: #2980b9; }
+        .newsletter { background: #2c3e50; color: white; padding: 60px 2rem; text-align: center; }
+        .newsletter-form { display: flex; max-width: 500px; margin: 2rem auto; gap: 1rem; }
+        .newsletter-input { flex: 1; padding: 1rem; border: none; border-radius: 5px; }
+        .subscribe-btn { background: #3498db; color: white; border: none; padding: 1rem 2rem; border-radius: 5px; cursor: pointer; }
+        footer { background: #1a252f; color: white; padding: 40px 2rem 20px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section a { color: #bbb; text-decoration: none; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid #333; color: #888; }
+        @media (max-width: 768px) { .hero h1 { font-size: 2rem; } .newsletter-form { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🛍️ ShopHub</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="cart-icon">🛒 Cart (0)</div>
+        </nav>
+    </header>
+    
+    <section class="hero" id="home">
+        <h1>Welcome to ShopHub</h1>
+        <p>Discover amazing products at unbeatable prices</p>
+        <button class="cta-button">Shop Now</button>
+    </section>
+    
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Shop With Us?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Free Shipping</h3>
+                    <p>Free delivery on all orders over $50</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure Payment</h3>
+                    <p>100% secure payment processing</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Quality Products</h3>
+                    <p>Hand-picked premium quality items</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>24/7 Support</h3>
+                    <p>Dedicated customer support team</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">👕</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Premium T-Shirt</h3>
+                        <p class="product-price">$29.99</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">👟</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Running Shoes</h3>
+                        <p class="product-price">$89.99</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">🎧</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Wireless Headphones</h3>
+                        <p class="product-price">$149.99</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">⌚</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Smart Watch</h3>
+                        <p class="product-price">$199.99</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">💼</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Leather Bag</h3>
+                        <p class="product-price">$129.99</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">📱</div>
+                    <div class="product-info">
+                        <h3 class="product-title">Phone Case</h3>
+                        <p class="product-price">$24.99</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="newsletter">
+        <h2>Subscribe to Our Newsletter</h2>
+        <p>Get exclusive deals and updates delivered to your inbox</p>
+        <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+            <button type="submit" class="subscribe-btn">Subscribe</button>
+        </form>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About ShopHub</h3>
+                <p>Your trusted online marketplace for quality products at great prices.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/auth">Auth</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
