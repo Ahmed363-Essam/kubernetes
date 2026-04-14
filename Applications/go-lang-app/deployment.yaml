@@ -1,0 +1,39 @@
+# https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-lang
+  namespace: default
+  labels:
+    app: go-lang
+spec:
+  selector:
+    matchLabels:
+      app: go-lang
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: go-lang
+    spec:
+
+      containers:
+      - name: go-lang
+        image: ahmedessam404/go-api:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 8080
+          name: go
+
