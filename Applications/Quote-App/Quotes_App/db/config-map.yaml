@@ -1,0 +1,13 @@
+# https://kubernetes.io/docs/concepts/configuration/configmap/
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: postgress-config-map
+  namespace: default
+data:
+  POSTGRES_PASSWORD: password
+  POSTGRES_USER: user
+  POSTGRES_DB: myappdb
+  POSTGRES_PORT: "5432"
+
+

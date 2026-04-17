@@ -1,0 +1,15 @@
+# https://kubernetes.io/docs/concepts/services-networking/service/
+apiVersion: v1
+kind: Service
+metadata:
+  name: quote-app
+  namespace: default
+spec:
+  selector:
+    app: quote-app
+  type: NodePort
+  ports:
+  - name: quote-app
+    protocol: TCP
+    port: 3000
+    targetPort: 3000

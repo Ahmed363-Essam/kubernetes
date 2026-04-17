@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quote-app
+  namespace: default
+  labels:
+    app: quote-app
+spec:
+  selector:
+    matchLabels:
+      app: quote-app
+  replicas: 3
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: quote-app
+    spec:
+
+      containers:
+      - name: quote-app
+        image: ahmedessam404/quotes_app-web:2.0.0
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+
+
+        env:
+        - name: DB_HOST
+          value: "postgres" # This should match the name of the headless service  
+
+        - name: DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: postgress-config-map
+              key: POSTGRES_PORT
+
+
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              name: postgress-config-map
+              key: POSTGRES_USER
+
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: postgress-config-map
+              key: POSTGRES_DB
+
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: postgress-config-map
+              key: POSTGRES_PASSWORD
+
+
+
+
+        ports:
+        - containerPort: 3000
+          name: quote-app
+          protocol: TCP
+
+

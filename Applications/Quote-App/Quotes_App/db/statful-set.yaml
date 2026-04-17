@@ -1,0 +1,58 @@
+# https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: db
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: db # has to match .spec.template.metadata.labels
+  serviceName: "db"
+  replicas: 1 # by default is 1
+  template:
+    metadata:
+      labels:
+        app: db # has to match .spec.selector.matchLabels
+    spec:
+      containers:
+      - name: db
+        image: postgres:latest
+        ports:
+        - containerPort: 5432
+          name: db
+
+        env:
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: postgress-config-map
+              key: POSTGRES_PASSWORD
+
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              name: postgress-config-map
+              key: POSTGRES_USER
+
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: postgress-config-map
+              key: POSTGRES_DB
+
+        - name: POSTGRES_PORT
+          value: "5432"
+
+        volumeMounts:
+        - name: postgress-data
+          mountPath: /var/lib/postgresql
+  volumeClaimTemplates:
+  - metadata:
+      name: postgress-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: standard
+      resources:
+        requests:
+          storage: 1Gi
